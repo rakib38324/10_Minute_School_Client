@@ -1,33 +1,38 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import logo from './logo.svg'
 const Header = () => {
     return (
-        <div className="navbar bg-white text-primary-content px-5">
-            <Link className='mr-5' to='/'><img className='w-24 h-8' src={logo} alt="" /></Link>
-            <Link className='btn btn-ghost normal-case text-xl text-black' to='/'>Home</Link>
-            <Link className='btn btn-ghost normal-case text-xl text-black' to='/login'>Log in</Link>
-            <Link className='btn btn-ghost normal-case text-xl text-black' to='/signup'>Sign up</Link>
+        <Navbar collapseOnSelect className='mb-5' expand="lg" bg="light" variant="light">
             
-            <Link className='btn btn-ghost normal-case text-xl text-black' to='/'>About</Link>
-            <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img src="https://placeimg.com/80/80/people" />
-                    </div>
-                </label>
-                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                    <li>
-                        <a className="justify-between">
-                            Profile
-                            <span className="badge">New</span>
-                        </a>
-                    </li>
-                    <li><a>Settings</a></li>
-                    <li><a>Logout</a></li>
-                </ul>
-            </div>
-        </div>
+      <Container>
+
+        <Link className='text-decoration-none text-dark' to='/'><img src={logo} alt="" />Learn any time </Link>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+
+            <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/'>Home</Link>
+            <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/courses'>Courses</Link>
+            <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/login'>Login</Link>
+            <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/signup'>Sign Up</Link>
+            
+
+
+          </Nav>
+          <Nav>
+            <Nav.Link href="#deets">More deets</Nav.Link>
+            <Nav.Link eventKey={2} href="#memes">
+              Dank memes
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
     );
 };
 
