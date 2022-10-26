@@ -2,11 +2,10 @@ import React, { useContext, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import logo from './logo.svg'
-import './Header.css'
+
 
 
 
@@ -18,15 +17,12 @@ const Header = () => {
 
 
 
-
-
-
     return (
         <Navbar collapseOnSelect className='mb-5 position-related position-relative' expand="lg" bg="light" variant="light">
 
             <Container>
 
-                <Link className='text-decoration-none text-dark ' to='/'><img src={logo} alt="" />Learn any time </Link>
+                <Link className='text-decoration-none text-danger fw-bold ' to='/'><img src={logo} alt="" />LEARN ANY TIME </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto ">
