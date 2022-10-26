@@ -1,4 +1,4 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
@@ -11,9 +11,13 @@ const SignUp = () => {
 
     const provider = new GoogleAuthProvider();
 
-    const [error, setError] = useState(null)
+    const githubProvider = new GithubAuthProvider();
 
-    const { createUser} = useContext(AuthContext)
+
+    const [error, setError] = useState(null)
+    const [verify, setVerify] = useState('')
+
+    const { createUser } = useContext(AuthContext)
 
 
     const handleSubmit = (event) => {
@@ -21,9 +25,11 @@ const SignUp = () => {
         event.preventDefault();
 
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         const Confirm = form.confirmPassword.value;
+        const picture = form.picture.value;
         console.log(email, password, Confirm);
 
         if (password.length < 6) {
@@ -36,33 +42,81 @@ const SignUp = () => {
             return;
         }
 
-        createUser(email, password)
+        createUser(email, password, name, picture)
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                updateName(name, picture);
+                emailVarify(setVerify("Sent your verification link in your email"))
                 form.reset();
             })
             .catch(error => {
                 console.error(error);
             })
 
+    }
+
+
+
+    const updateName = (name, picture) => {
+        updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: picture
+        }).then(() => {
+            // Profile updated!
+            // ...
+        }).catch((error) => {
+            // An error occurred
+            // ...
+        });
 
     }
 
-    const handleGoogleSignIn = ()=>{
-     signInWithPopup(auth, provider)
-     .then(result => {
-        const user = result.user;
-        console.log(user)
-    })
-    .catch(error => {
-        console.error(error);
-    })
+
+    const emailVarify = () => {
+        sendEmailVerification(auth.currentUser)
+            .then(() => {
+                // Email verification sent!
+                // ...
+            });
+    }
+
+
+
+
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        signInWithPopup(auth, githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     return (
         <div >
-            <form onSubmit={handleSubmit} className='w-25 mx-auto p-3 border border-success'>
+            <form onSubmit={handleSubmit} className='w-50 mx-auto p-3 border border-success rounded-3'>
+                <p>{verify}</p>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" className="form-label" >Full Name</label>
+
+                    <input type="text" className="form-control" id="exampleInputEmail1" name='name' placeholder='Enter your full name' required />
+
+                </div>
+
                 <div class="mb-3">
                     <label for="exampleInputEmail1" className="form-label" >Email address</label>
 
@@ -84,13 +138,20 @@ const SignUp = () => {
 
                 </div>
 
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" className="form-label" >Picture URL</label>
+
+                    <input type="text" className="form-control" name='picture' placeholder='Please past your picture url' required />
+
+                </div>
+
                 <p className='text-danger'>{error}</p>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Register</button>
                 <p>Already Have an Account? Please <Link to='/login'>Login</Link></p>
                 <div className='d-flex justify-content-around'>
-                    <button onClick={handleGoogleSignIn}  type="button" class="btn btn-outline-success">Sign in with Google</button>
-                    <button type="button" class="btn btn-outline-secondary">Sign in with GitHub</button>
+                    <button onClick={handleGoogleSignIn} type="button" class="btn btn-outline-success">Sign in with Google</button>
+                    <button onClick={handleGithubSignIn} type="button" class="btn btn-outline-secondary">Sign in with GitHub</button>
                 </div>
             </form>
         </div>

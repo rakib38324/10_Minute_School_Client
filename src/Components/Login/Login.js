@@ -30,7 +30,7 @@ const Login = () => {
 
     return (
         <div >
-            <form onSubmit={handleSubmit} className='w-25 mx-auto sm-w-100 p-3 border border-success rounded-3'>
+            <form onSubmit={handleSubmit} className='w-50 mx-auto p-3 border border-success rounded-3'>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" className="form-label" >Email address</label>
 
@@ -47,7 +47,7 @@ const Login = () => {
                 
                 
                 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Login</button>
                 <p>New to 10 Minute School? Please <Link to='/signup'>Create a New Account</Link></p>
             </form>
         </div>
