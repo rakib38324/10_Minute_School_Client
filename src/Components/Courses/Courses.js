@@ -9,7 +9,7 @@ import { useLoaderData } from 'react-router-dom';
 const Courses = () => {
 
     const course = useLoaderData()
-    console.dir(course)
+    // console.dir(course)
     
     // console.log(course[0].title)
     // const name = course[0].title
