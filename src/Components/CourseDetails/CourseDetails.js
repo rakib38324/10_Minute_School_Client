@@ -20,7 +20,7 @@ const CourseDetails = () => {
                 <h4 className='fw-bolder'>Enrolment fee: {course.price}TK</h4>
 
                 <div className='d-flex justify-content-around pt-5'>
-                    <Link to={'/enrolNow'} type="button" class="fs-3 btn btn-primary">Enroll Now</Link>
+                    <Link to={`/enrolNow/${course._id}`} type="button" class="fs-3 btn btn-primary">Enroll Now</Link>
                     <Pdf targetRef={ref} filename="code-example.pdf">
                         {({ toPdf }) => <button className='fs-3 btn btn-primary' onClick={toPdf}>Download Pdf</button>}
                     </Pdf>

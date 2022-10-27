@@ -1,53 +1,27 @@
 import React, { useContext, useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 import { AuthContext } from '../Contexts/UserContext';
+import { Link } from 'react-router-dom';
 
 
 const Profile = () => {
     const {user} = useContext(AuthContext)
-    const [name, setName] = useState(user.displayName)
-
-    const photoURLRef = useRef(user.photoURL)
-
-
-    const handleSubmit = event =>{
-        event.preventDefault();
-        console.log(photoURLRef.current.value)
-    }
-
-
-    const handleNameChange = (event) =>{
-
-        setName(event.target.value)
-    }
+    const {displayName, photoURL,email } = user;
 
     return (
         <div>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control readOnly defaultValue={user?.email} type="email" placeholder="Enter email" />
-                    
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Your name</Form.Label>
-                    <Form.Control onChange={handleNameChange} defaultValue={name} type="text" placeholder="name" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>photo URL</Form.Label>
-                    <Form.Control ref={photoURLRef} defaultValue={user?.photoURL} type="text" placeholder="Photo URL" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
+            <Card className='w-25 mx-auto'>
+                <Card.Img variant="top" src={photoURL} />
+                <Card.Body>
+                    <Card.Title>{displayName}</Card.Title>
+                    <Card.Text>
+                        {email}
+                    </Card.Text>
+                    <Link to='/' className="btn btn-primary">Go Home</Link>
+                </Card.Body>
+            </Card>
         </div>
     );
 };

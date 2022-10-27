@@ -2,8 +2,11 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 
 const Blog = () => {
+    
     return (
+        
         <div className='w-75 mx-auto'>
+            <h1 className='text-center'>Blogs</h1>
             <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>What is CORS?</Accordion.Header>
