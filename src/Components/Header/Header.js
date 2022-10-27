@@ -38,9 +38,9 @@ const Header = () => {
                                     <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' onClick={logOut}>Log out</Link>
 
 
-                                    <div className='w-25  mt-4  position-absolute top-50 end-0 translate-middle-y'>
+                                    <Link to='/profile' className='w-25  mt-4  position-absolute top-50 end-0 translate-middle-y'>
                                         <img data-toggle="tooltip" data-placement="top" title={user?.displayName} className='border border-primary rounded-circle w-25' src={user?.photoURL} alt="" />
-                                    </div>
+                                    </Link>
                                 </>
 
 
