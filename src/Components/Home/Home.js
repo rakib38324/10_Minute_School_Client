@@ -69,12 +69,12 @@ const Home = () => {
                     Courses.map(course => <p>
 
                         <div>
-                            <div class="card" >
+                            <div class="card w-50 mx-auto" >
                                 <img src={course.image_url} class="card-img-top" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">{course.title}</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <Link href="#" class="btn btn-primary">Go somewhere</Link>
+                                    <Link to={`/course/${course._id}`} type="button" class="btn btn-primary">Show More</Link>
                                 </div>
                             </div>
                         </div>

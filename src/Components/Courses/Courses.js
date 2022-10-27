@@ -19,18 +19,16 @@ const Courses = () => {
         <div >
             <Container>
                 <Row>
-                    <Col sm={4}>
+                    <Col sm={3} >
 
                         <LeftsideNav></LeftsideNav>
                     
                     </Col>
 
 
-                    <Col sm={8}>
+                    <Col  sm={9}>
 
-                        {/* <AllCourses courses = {course}></AllCourses> */}
-                        
-                        
+                    <h1 className='fw-bolder text-center pb-4 lg:p-4'>COURSES</h1>
                         
                         {
                             course?.length && course.map( course =>
@@ -42,13 +40,8 @@ const Courses = () => {
                             ></AllCourses>
                             )
 
-
-
-
                         }
-                       
-
-                       
+       
                     
                     </Col>
                 </Row>
