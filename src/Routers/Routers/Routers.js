@@ -5,8 +5,10 @@ import Courses from "../../Components/Courses/Courses";
 import FAQ from "../../Components/FAQ/FAQ";
 import Home from "../../Components/Home/Home";
 import Login from "../../Components/Login/Login";
+import EnrollNow from "../../Components/NerollNow/EnrollNow";
 import SignUp from "../../Components/SignUp/SignUp";
 import Main from "../../Layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -41,6 +43,11 @@ export const routes = createBrowserRouter([
                 path: '/course/:id',
                 element: <CourseDetails></CourseDetails>,
                 loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`)
+            },
+            {
+                path: '/enrolNow',
+                element: <PrivateRoute> <EnrollNow></EnrollNow> </PrivateRoute>,
+                
             },
             {
                 path: '/faq',

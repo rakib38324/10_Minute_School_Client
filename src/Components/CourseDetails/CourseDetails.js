@@ -19,9 +19,9 @@ const CourseDetails = () => {
                 <h3 className='fw-bolder pt-3'>Already Enrolled: {course.already_enrolled}</h3>
                 <h4 className='fw-bolder'>Enrolment fee: {course.price}TK</h4>
                 <div className='d-flex justify-content-around pt-5'>
-                            
-                            <Link type="button" class="fs-3 btn btn-primary">Enroll Now</Link>
-                        </div>
+
+                    <Link to={'/enrolNow'} type="button" class="fs-3 btn btn-primary">Enroll Now</Link>
+                </div>
             </Card.Body>
         </Card>
     );

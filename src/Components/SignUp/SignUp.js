@@ -1,14 +1,17 @@
 import { getAuth, GithubAuthProvider, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import app from '../../Firebase/Firebase.config';
-import {FaGoogle,FaGithub} from 'react-icons/fa'
+import { FaGoogle, FaGithub } from 'react-icons/fa'
 
 
 const auth = getAuth(app)
 
 const SignUp = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const provider = new GoogleAuthProvider();
 
@@ -24,6 +27,7 @@ const SignUp = () => {
     const handleSubmit = (event) => {
 
         event.preventDefault();
+
 
         const form = event.target;
         const name = form.name.value;
@@ -50,6 +54,7 @@ const SignUp = () => {
                 updateName(name, picture);
                 emailVarify(setVerify("Sent your verification link in your email"))
                 form.reset();
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
@@ -90,6 +95,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
@@ -101,6 +107,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
@@ -146,13 +153,22 @@ const SignUp = () => {
 
                 </div>
 
+
                 <p className='text-danger'>{error}</p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Accept Terms and Condition
+                        </label>
+                </div>
+
 
                 <button type="submit" class="btn btn-primary">Register</button>
                 <p>Already Have an Account? Please <Link to='/login'>Login</Link></p>
                 <div className='d-flex justify-content-around'>
                     <button onClick={handleGoogleSignIn} type="button" class="btn btn-outline-success ">  <FaGoogle></FaGoogle> Sign in with Google</button>
-                    
+
                     <button onClick={handleGithubSignIn} type="button" class="btn btn-outline-secondary"> <FaGithub></FaGithub>  Sign in with GitHub</button>
                 </div>
             </form>
