@@ -30,9 +30,9 @@ const Home = () => {
                             src={pic3}
                             alt="First slide"
                         />
-                        <Carousel.Caption>
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <Carousel.Caption className='text-white'>
+                            <h3>Enjoy Yourself</h3>
+                            <p>For many of us, enjoying life is a difficult task. A lot of people rely on external factors to make them happy, but ultimately the change has to come from within. By taking care of yourself and changing the way you think and behave as you move through life, you can boost your enjoyment.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -42,8 +42,19 @@ const Home = () => {
                             alt="Second slide"
                         />
                         <Carousel.Caption>
-                            <h5>Second slide label</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <h5>Be Pensionable</h5>
+                            <p>As people go through the course of their careers,
+                                they have an expectation that a time will come
+                                when they will be able to retire. When that time
+                                comes, it is befitting that one is financially secure
+                                to avoid any money strains that come with day
+                                to day living. This is where pension comes in. In
+                                broader terms, the United Nations through the
+                                sustainable development goals (SDGs) has purposed
+                                “to end poverty in all its forms everywhere”; the
+                                pension benefit must therefore also be sufficient to
+                                lead to a dignified retirement that addresses these
+                                overarching and global SDGs</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
