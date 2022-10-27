@@ -15,7 +15,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/catagory/08')
+        fetch('https://10-munite-school-server.vercel.app/catagory/08')
             .then(res => res.json())
             .then(data => setCourses(data))
     }, [])

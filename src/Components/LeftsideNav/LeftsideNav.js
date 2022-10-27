@@ -8,7 +8,7 @@ const LeftsideNav = () => {
 
 
     useEffect(() =>{
-        fetch('http://localhost:5000/Courses')
+        fetch('https://10-munite-school-server.vercel.app/Courses')
         .then(res => res.json())
         .then(data => setCourses(data))
     },[])
