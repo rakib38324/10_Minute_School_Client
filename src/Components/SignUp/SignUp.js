@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import app from '../../Firebase/Firebase.config';
 import { FaGoogle, FaGithub } from 'react-icons/fa'
+import toast from 'react-hot-toast';
 
 
 const auth = getAuth(app)
@@ -18,8 +19,8 @@ const SignUp = () => {
     const githubProvider = new GithubAuthProvider();
 
 
-    const [error, setError] = useState(null)
-    const [verify, setVerify] = useState('')
+
+    const [accept, setAccept] = useState(false)
 
     const { createUser } = useContext(AuthContext)
 
@@ -38,12 +39,14 @@ const SignUp = () => {
         console.log(email, password, Confirm);
 
         if (password.length < 6) {
-            setError("Password should be 6 character or more")
+           
+            toast.error("Password should be 6 character or more")
             return;
         }
 
         if (password !== Confirm) {
-            setError("Your Password did not match");
+           
+            toast.error("Your Password did not match")
             return;
         }
 
@@ -52,12 +55,15 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
                 updateName(name, picture);
-                emailVarify(setVerify("Sent your verification link in your email"))
+                emailVarify()
                 form.reset();
                 navigate(from, { replace: true });
+                toast.success("Login Successfully")
+                toast.success("Please Verify your Email Address.")
             })
             .catch(error => {
                 console.error(error);
+
             })
 
     }
@@ -84,7 +90,8 @@ const SignUp = () => {
             .then(() => {
                 // Email verification sent!
                 // ...
-            });
+            })
+            .catch(error=>console.error(error))
     }
 
 
@@ -96,6 +103,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
                 navigate(from, { replace: true });
+                toast.success("Login Successfully")
             })
             .catch(error => {
                 console.error(error);
@@ -108,16 +116,23 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
                 navigate(from, { replace: true });
+                toast.success("Login Successfully")
             })
             .catch(error => {
                 console.error(error);
             })
     }
 
+
+    const handleAccepted = (event) =>{
+        setAccept(event.target.checked);
+    }
+
+
     return (
         <div >
             <form onSubmit={handleSubmit} className='w-50 mx-auto p-3 border border-success rounded-3'>
-                <p>{verify}</p>
+               
                 <div class="mb-3">
                     <label for="exampleInputEmail1" className="form-label" >Full Name</label>
 
@@ -154,17 +169,19 @@ const SignUp = () => {
                 </div>
 
 
-                <p className='text-danger'>{error}</p>
+                
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                    <input onClick={handleAccepted} class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
                         <label class="form-check-label" for="flexCheckChecked">
-                            Accept Terms and Condition
+                            <>
+                            Accept <Link to='/terms'>Terms and Condition</Link>
+                            </>
                         </label>
                 </div>
 
 
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary" disabled={!accept}>Register</button>
                 <p>Already Have an Account? Please <Link to='/login'>Login</Link></p>
                 <div className='d-flex justify-content-around'>
                     <button onClick={handleGoogleSignIn} type="button" class="btn btn-outline-success ">  <FaGoogle></FaGoogle> Sign in with Google</button>

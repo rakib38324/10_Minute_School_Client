@@ -18,8 +18,6 @@ const UserContext = ({ children }) => {
     }
 
 
-
-
     const varifyEmail = ()=>{
         return sendEmailVerification(auth.currentUser)
     }
@@ -36,7 +34,9 @@ const UserContext = ({ children }) => {
     }
 
 
-
+ const updateUserProfile = (profile) =>{
+    return updateProfile(auth.currentUser)
+ }
 
 
 

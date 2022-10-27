@@ -8,6 +8,8 @@ import Login from "../../Components/Login/Login";
 import EnrollNow from "../../Components/NerollNow/EnrollNow";
 import SignUp from "../../Components/SignUp/SignUp";
 import Main from "../../Layout/Main";
+import Profile from "../../Profile/Profile";
+import TermsAndCondition from "../../TermsAndCondition/TermsAndCondition";
 import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([
@@ -56,6 +58,14 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/terms',
+                element: <TermsAndCondition></TermsAndCondition>
+            },
+            {
+                path: '/profile',
+                element: <PrivateRoute> <Profile></Profile> </PrivateRoute>
             }
         ]
     }
