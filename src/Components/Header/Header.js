@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import logo from './logo.svg'
+import Form from 'react-bootstrap/Form';
 
 
 
@@ -31,6 +32,16 @@ const Header = () => {
                         <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/catagory'>Courses</Link>
                         <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/blog'>Blog</Link>
                         <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/faq'>FAQ</Link>
+                        <Form className='d-flex gap-3 '>
+                            <p>Light</p>
+                            <Form.Check
+                                type="switch"
+                                id="custom-switch"
+                                label=""
+                                
+                            />
+                            <p>Dark</p>
+                        </Form>
 
                         {
                             user?.uid ?
@@ -53,7 +64,7 @@ const Header = () => {
                         }
 
 
-                      
+
 
                     </Nav>
                     <Nav>
