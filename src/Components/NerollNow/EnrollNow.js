@@ -2,8 +2,8 @@ import React from 'react';
 
 const EnrollNow = () => {
     return (
-        <div>
-            <h1>enrol now</h1>
+        <div className='w-75 mx-auto'>
+            <h1>Please Complete Payment Method</h1>
         </div>
     );
 };

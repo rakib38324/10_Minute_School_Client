@@ -23,7 +23,7 @@ const AllCourses = ({ courses }) => {
                         <h4 className='fw-bolder'>Enrolment fee: {price}TK</h4>
                         <div className='d-flex justify-content-around pt-5'>
                             <Link to={`/course/${_id}`} type="button" class="btn btn-primary">Show More</Link>
-                            <Link to={'/enrolNow'} type="button" class="btn btn-primary">Enroll Now</Link>
+                            <Link to={'/enrolNow'} type="button" class="btn btn-primary">Get Premium Access</Link>
                         </div>
                     </div>
                 </div>

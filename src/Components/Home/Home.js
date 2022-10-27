@@ -41,8 +41,8 @@ const Home = () => {
                             src={pic1}
                             alt="Second slide"
                         />
-                        <Carousel.Caption>
-                            <h5>Be Pensionable</h5>
+                        <Carousel.Caption className='text-white'>
+                            <h3>Be Pensionable</h3>
                             <p>As people go through the course of their careers,
                                 they have an expectation that a time will come
                                 when they will be able to retire. When that time
@@ -63,10 +63,10 @@ const Home = () => {
                             src={pic2}
                             alt="Third slide"
                         />
-                        <Carousel.Caption>
-                            <h5>Third slide label</h5>
+                        <Carousel.Caption className='text-white'>
+                            <h3>Work Hard</h3>
                             <p>
-                                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                            We learn important life lessons when we give ourselves over to hard work: determination, attentiveness, responsibility, problem-solving, and self-control all come to mind.
                             </p>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -74,7 +74,7 @@ const Home = () => {
             </div>
 
 
-            <h1 className='fw-bolder text-center pb-4 lg:p-4'>ALL COURSES</h1>
+            <h1 className='fw-bolder text-center  mt-5 pb-4 lg:p-4'>ALL COURSES</h1>
             <div >
                 {
                     Courses.map(course => <p>
