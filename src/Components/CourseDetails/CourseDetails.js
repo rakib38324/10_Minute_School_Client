@@ -10,7 +10,7 @@ const CourseDetails = () => {
     console.log(course)
     console.log(course.title)
     return (
-        <Card ref={ref} className='w-50 mx-auto mb-5'>
+        <Card ref={ref} className='w-75 mx-auto mb-5'>
             <Card.Img variant="top" src={course.image_url} />
             <Card.Body>
                 <Card.Title className='fs-2 text fw-bolder text-center'>{course.title}</Card.Title>

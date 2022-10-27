@@ -2,7 +2,7 @@ import React from 'react';
 
 const HomeCard = ({ courses }) => {
     console.log(courses)
-    const { _id, title, details, image_url } = courses;
+    const { title, details, image_url } = courses;
     return (
        
             <div>

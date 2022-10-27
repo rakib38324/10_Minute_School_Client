@@ -30,9 +30,9 @@ const Home = () => {
                             src={pic3}
                             alt="First slide"
                         />
-                        <Carousel.Caption className='text-white'>
-                            <h3>Enjoy Yourself</h3>
-                            <p>For many of us, enjoying life is a difficult task. A lot of people rely on external factors to make them happy, but ultimately the change has to come from within. By taking care of yourself and changing the way you think and behave as you move through life, you can boost your enjoyment.</p>
+                        <Carousel.Caption className='sm:d-none text-white '>
+                            <h3 >Enjoy Yourself</h3>
+                            <p >For many of us, enjoying life is a difficult task. A lot of people rely on external factors to make them happy, but ultimately the change has to come from within. By taking care of yourself and changing the way you think and behave as you move through life, you can boost your enjoyment.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>

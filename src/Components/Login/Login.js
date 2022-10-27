@@ -76,7 +76,7 @@ const Login = () => {
 
     return (
         <div >
-            <form onSubmit={handleSubmit} className='w-50 mx-auto p-3 border border-success rounded-3'>
+            <form onSubmit={handleSubmit} className='w-75 mx-auto p-3 border border-success rounded-3'>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" className="form-label" >Email address</label>
 
