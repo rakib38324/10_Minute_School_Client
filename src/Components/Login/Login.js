@@ -1,8 +1,17 @@
-import React, { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
+import app from '../../Firebase/Firebase.config';
+import {FaGoogle,FaGithub} from 'react-icons/fa'
+
+const auth = getAuth(app)
 
 const Login = () => {
+    const provider = new GoogleAuthProvider();
+
+    const githubProvider = new GithubAuthProvider();
 
     const {signIn} = useContext(AuthContext);
 
@@ -26,7 +35,27 @@ const Login = () => {
         })
     }
 
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
 
+    const handleGithubSignIn = () => {
+        signInWithPopup(auth, githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
 
     return (
         <div >
@@ -49,6 +78,15 @@ const Login = () => {
                 
                 <button type="submit" class="btn btn-primary">Login</button>
                 <p>New to 10 Minute School? Please <Link to='/signup'>Create a New Account</Link></p>
+
+
+                <div className='d-flex justify-content-around'>
+                    <button onClick={handleGoogleSignIn} type="button" class="btn btn-outline-success ">  <FaGoogle></FaGoogle> Sign in with Google</button>
+                    
+                    <button onClick={handleGithubSignIn} type="button" class="btn btn-outline-secondary"> <FaGithub></FaGithub>  Sign in with GitHub</button>
+                </div>
+
+
             </form>
         </div>
     );

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+
 
 const LeftsideNav = () => {
     const [Courses, setCourses] = useState([])
+    
 
 
     useEffect(() =>{
@@ -12,12 +14,12 @@ const LeftsideNav = () => {
     },[])
     return (
         <div>
-            <h1>leftside nav</h1>
-            <div>
+            <h1 className='fw-bolder text-center pb-4 lg:p-4'>ALL COURSES</h1>
+            <div >
                 {
-                    Courses.map(course => <p key= {course.courses_id
+                    Courses.map(course => <p className='lg:w-75  fs-5 text-center text border p-3'  key= {course.courses_id
                     }>
-                        <Link to={`/course/${course.id}`}>{course.courses_name}</Link>
+                        <Link className='text-decoration-none fw-semibold text-dark px-4'   to={`/catagory/${course.courses_id}`}>{course.courses_name}</Link>
                     </p>)
                 }
             </div>

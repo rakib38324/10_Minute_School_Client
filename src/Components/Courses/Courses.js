@@ -3,9 +3,18 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';import LeftsideNav from '../LeftsideNav/LeftsideNav';
 import AllCourses from '../AllCourses/AllCourses';
-;
+import { useLoaderData } from 'react-router-dom';
+
 
 const Courses = () => {
+
+    const course = useLoaderData()
+    console.dir(course)
+    
+    // console.log(course[0].title)
+    // const name = course[0].title
+
+
     return (
         <div >
             <Container>
@@ -19,7 +28,27 @@ const Courses = () => {
 
                     <Col sm={8}>
 
-                        <AllCourses></AllCourses>
+                        {/* <AllCourses courses = {course}></AllCourses> */}
+                        
+                        
+                        
+                        {
+                            course?.length && course.map( course =>
+                         
+                            <AllCourses
+                            key={course._id}
+                            courses = {course}
+                            
+                            ></AllCourses>
+                            )
+
+
+
+
+                        }
+                       
+
+                       
                     
                     </Col>
                 </Row>

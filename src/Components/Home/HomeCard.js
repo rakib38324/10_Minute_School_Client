@@ -1,15 +1,11 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
 
-const AllCourses = ({ courses }) => {
-
-
-    // console.log(courses)
+const HomeCard = ({ courses }) => {
+    console.log(courses)
     const { _id, title, details, image_url } = courses;
-
     return (
-        <div>
+       
+            <div>
             <div class="">
                 <div class="col">
                     <div class="card">
@@ -23,7 +19,8 @@ const AllCourses = ({ courses }) => {
             </div>
             
         </div>
+        
     );
 };
 
-export default AllCourses;
+export default HomeCard;

@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import app from '../../Firebase/Firebase.config';
+import {FaGoogle,FaGithub} from 'react-icons/fa'
 
 
 const auth = getAuth(app)
@@ -150,8 +151,9 @@ const SignUp = () => {
                 <button type="submit" class="btn btn-primary">Register</button>
                 <p>Already Have an Account? Please <Link to='/login'>Login</Link></p>
                 <div className='d-flex justify-content-around'>
-                    <button onClick={handleGoogleSignIn} type="button" class="btn btn-outline-success">Sign in with Google</button>
-                    <button onClick={handleGithubSignIn} type="button" class="btn btn-outline-secondary">Sign in with GitHub</button>
+                    <button onClick={handleGoogleSignIn} type="button" class="btn btn-outline-success ">  <FaGoogle></FaGoogle> Sign in with Google</button>
+                    
+                    <button onClick={handleGithubSignIn} type="button" class="btn btn-outline-secondary"> <FaGithub></FaGithub>  Sign in with GitHub</button>
                 </div>
             </form>
         </div>

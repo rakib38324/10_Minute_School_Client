@@ -28,8 +28,9 @@ const Header = () => {
                     <Nav className="me-auto ">
 
                         <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/'>Home</Link>
-                        <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/courses'>Courses</Link>
+                        <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/catagory'>Courses</Link>
                         <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/blog'>Blog</Link>
+                        <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' to='/faq'>FAQ</Link>
 
                         {
                             user?.uid ?
@@ -37,8 +38,8 @@ const Header = () => {
                                     <Link className='text-decoration-none text-2xl fw-semibold text-dark px-4' onClick={logOut}>Log out</Link>
 
 
-                                    <div className='w-25  mt-5  position-absolute top-50 end-0 translate-middle-y'>
-                                        <img data-toggle="tooltip" data-placement="top" title={user?.displayName} className='border border-primary rounded-circle w-25 h-25' src={user?.photoURL} alt="" />
+                                    <div className='w-25  mt-4  position-absolute top-50 end-0 translate-middle-y'>
+                                        <img data-toggle="tooltip" data-placement="top" title={user?.displayName} className='border border-primary rounded-circle w-25' src={user?.photoURL} alt="" />
                                     </div>
                                 </>
 
